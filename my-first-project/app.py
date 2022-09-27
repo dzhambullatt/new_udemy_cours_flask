@@ -5,8 +5,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    #return render_template('index.html')
-    return redirect(url_for('about'))
+    cars = ['bmw', 'audi', 'bugatti', 'lamborghini']
+    return render_template('index.html', cars=cars) #cars=cars это передача списка в сам шаблон по ключевому слову cars
 
 
 @app.route('/about')
