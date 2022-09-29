@@ -18,8 +18,12 @@ mysql = MySQL(app)
 @app.route('/')
 def index():
     cursor = mysql.connection.cursor()
-    cursor.execute("INSERT INTO user VALUES(%s)", (['1Adlan']))
-    mysql.connection.commit()
+    # cursor.execute("INSERT INTO user VALUES(%s)", (['1Adlan'])
+    # mysql.connection.commit()
+    result_value = cursor.execute("SELECT * FROM user")
+    if result_value > 0:
+        users = cursor.fetchall()
+    print(users)
     return render_template('index.html')  # cars=cars это передача списка в сам шаблон по ключевому слову cars
 
 
